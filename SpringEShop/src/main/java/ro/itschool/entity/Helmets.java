@@ -29,11 +29,17 @@ public class Helmets {
     @Column(name = "helmet_size")
     private String helmetSize;
 
+
     @Column(name = "helmet_colour")
     private String helmetColour;
 
-    @ManyToMany(mappedBy = "helmets")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "userorder_helmets",
+            joinColumns = @JoinColumn(name = "helmets_id"),
+            inverseJoinColumns = @JoinColumn(name = "userorder_id"))
     private List<UserOrder> userOrder = new LinkedList<>();
+
+
 
     public Helmets(String helmetName, String helmetType, int helmetPrice, String helmetSize, String helmetColour) {
         this.helmetName = helmetName;

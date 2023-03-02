@@ -31,9 +31,11 @@ public class UserOrder {
             inverseJoinColumns = @JoinColumn(name = "helmets_id"))
     private List<Helmets> helmets = new LinkedList<>();
 
-    public UserOrder(LocalDateTime date, boolean status, User user) {
-        this.date = date;
-        this.status = status;
-        this.user = user;
+    public void addHelmetsToUserOrder(Helmets h){
+        this.helmets.add(h);
     }
+
+
+
+
 }
